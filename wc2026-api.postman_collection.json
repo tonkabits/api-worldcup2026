@@ -1,0 +1,262 @@
+{
+  "info": {
+    "name": "World Cup 2026 API",
+    "description": "Official Postman collection for the WC2026 REST API.\n\nBase URL: https://api.wc2026api.com\nDocs: https://api.wc2026api.com/docs\n\nSet the `api_key` collection variable to your API key before running requests.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://api.wc2026api.com",
+      "type": "string"
+    },
+    {
+      "key": "api_key",
+      "value": "YOUR_API_KEY_HERE",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{api_key}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Teams",
+      "item": [
+        {
+          "name": "List all teams",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/teams",
+              "host": ["{{base_url}}"],
+              "path": ["teams"]
+            },
+            "description": "Returns all 48 teams in the tournament."
+          }
+        },
+        {
+          "name": "Get team by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/teams/1",
+              "host": ["{{base_url}}"],
+              "path": ["teams", "1"]
+            },
+            "description": "Returns a single team by numeric ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Groups",
+      "item": [
+        {
+          "name": "List all groups",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/groups",
+              "host": ["{{base_url}}"],
+              "path": ["groups"]
+            },
+            "description": "Returns all 12 groups (A–L) with their teams."
+          }
+        },
+        {
+          "name": "Get group by ID (with standings)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/groups/1",
+              "host": ["{{base_url}}"],
+              "path": ["groups", "1"]
+            },
+            "description": "Returns a single group with teams and live standings."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Matches",
+      "item": [
+        {
+          "name": "Filter by group",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/matches?group=A",
+              "host": ["{{base_url}}"],
+              "path": ["matches"],
+              "query": [
+                {
+                  "key": "group",
+                  "value": "A",
+                  "description": "Group letter A–L"
+                }
+              ]
+            },
+            "description": "Filter matches by group (A–L)."
+          }
+        },
+        {
+          "name": "Filter by round",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/matches?round=group",
+              "host": ["{{base_url}}"],
+              "path": ["matches"],
+              "query": [
+                {
+                  "key": "round",
+                  "value": "group",
+                  "description": "group | R32 | R16 | QF | SF | 3rd | final"
+                }
+              ]
+            },
+            "description": "Filter by round: group, R32, R16, QF, SF, 3rd, final."
+          }
+        },
+        {
+          "name": "Filter by status",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/matches?status=live",
+              "host": ["{{base_url}}"],
+              "path": ["matches"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "live",
+                  "description": "scheduled | live | completed"
+                }
+              ]
+            },
+            "description": "Filter matches by status: scheduled, live, completed."
+          }
+        },
+        {
+          "name": "Filter by team",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/matches?team=USA",
+              "host": ["{{base_url}}"],
+              "path": ["matches"],
+              "query": [
+                {
+                  "key": "team",
+                  "value": "USA",
+                  "description": "3-letter team code e.g. BRA, ARG, USA, MEX"
+                }
+              ]
+            },
+            "description": "Filter matches involving a specific team (3-letter code)."
+          }
+        },
+        {
+          "name": "Get match by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/matches/1",
+              "host": ["{{base_url}}"],
+              "path": ["matches", "1"]
+            },
+            "description": "Returns a single match by numeric ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stadiums",
+      "item": [
+        {
+          "name": "List all stadiums",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/stadiums",
+              "host": ["{{base_url}}"],
+              "path": ["stadiums"]
+            },
+            "description": "Returns all 16 stadiums across USA, Canada, and Mexico."
+          }
+        },
+        {
+          "name": "Get stadium by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/stadiums/1",
+              "host": ["{{base_url}}"],
+              "path": ["stadiums", "1"]
+            },
+            "description": "Returns a single stadium by numeric ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks (Pro)",
+      "item": [
+        {
+          "name": "List subscriptions",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/webhooks",
+              "host": ["{{base_url}}"],
+              "path": ["webhooks"]
+            },
+            "description": "List all active webhook subscriptions for your API key. Requires Pro tier."
+          }
+        },
+        {
+          "name": "Create subscription",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/webhooks",
+              "host": ["{{base_url}}"],
+              "path": ["webhooks"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://your-server.com/webhook\",\n  \"events\": [\"goal\", \"yellow_card\", \"red_card\", \"substitution\", \"status_update\", \"score_update\"]\n}"
+            },
+            "description": "Subscribe to real-time match events. Your URL will receive signed HTTP POST requests.\n\nAvailable events:\n- goal\n- yellow_card\n- red_card\n- substitution\n- status_update\n- score_update\n\nVerify deliveries using the X-WC2026-Signature header (HMAC-SHA256).\n\nRequires Pro tier."
+          }
+        },
+        {
+          "name": "Delete subscription",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/webhooks/1",
+              "host": ["{{base_url}}"],
+              "path": ["webhooks", "1"]
+            },
+            "description": "Delete a webhook subscription by ID. Requires Pro tier."
+          }
+        }
+      ]
+    }
+  ]
+}
