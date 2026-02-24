@@ -1,6 +1,10 @@
 # World Cup 2026 API
 
+[![Visitors](https://visitor-badge.laobi.icu/badge?page_id=tonkabits.api-worldcup2026)](https://www.wc2026api.com/)
+
 A REST API for World Cup 2026 data — all 48 teams, 104 matches, 12 groups, 16 stadiums, live standings, and real-time match events via webhooks.
+
+**[→ Get your API key at wc2026api.com](https://www.wc2026api.com/)**
 
 **Base URL:** `https://api.wc2026api.com`
 **Docs (interactive):** `https://api.wc2026api.com/docs`
