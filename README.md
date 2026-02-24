@@ -79,7 +79,6 @@ Both tiers have access to all endpoints. Pro unlocks webhook subscriptions for r
 
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | `/matches` | All 104 matches |
 | GET | `/matches/:id` | Single match by ID |
 
 **Query params — `/matches`:**
